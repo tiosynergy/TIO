@@ -1,42 +1,44 @@
 import random
 
+#-----------Введення та перевірка типів вхідних данних------
 while True:
-    min_digit=int(input("Вееди мінімальне число >=1:"))
-    if min_digit>=1:
-        break
+    try:
+        min_digit=int(input("Введи мінімальне число >=1:"))
+        if type(min_digit)==False:
+            continue
+        else:
+            break
+    except ValueError:
+        print("Помилка: Потрібно вводити тільки цифри!")
+
 while True:
-    max_digit=int(input("Вееди максимальне число <=1000:"))
-    if max_digit>min_digit and max_digit<=1000:
-        break
+    try:
+        max_digit=int(input("Вееди максимальне число <=1000:"))
+        if type(max_digit)==False:
+            continue
+        else:
+            break
+    except ValueError:
+        print("Помилка: Потрібно вводити тільки цифри!")
 while True:
-    qtt_digits=int(input(f"Вееди необхідну кількість ввипадкових чисел в діапазоні до:{max_digit-min_digit}: "))
-    if qtt_digits<=max_digit-min_digit:
-        break
-def get_numbers_ticket(min, max, quantity):
-    digit_random_list=random.sample(range(min,max),quantity)
-    print(digit_random_list)
+    try:
+        qtt_digits=int(input(f"Введи необхідну кількість випадкових чисел в діапазоні до:{max_digit-min_digit}: "))
+        if type(qtt_digits)==False:
+            continue
+        else:
+            break
+    except ValueError:
+        print("Помилка: Потрібно вводити тільки цифри!")
 
-get_numbers_ticket(min_digit,max_digit,qtt_digits)
-
-
-
-
-
-
-
-# min_digit=int(input("Вееди мінімальне число:"))
-
-# while True:
-#     # Запрашиваем ввод и преобразуем в целое число
-#     number = int(input("Введите число (0 для выхода): "))
-    
-#     # Проверяем условие выхода
-#     if number == 0:
-#         print("Вы ввели ноль. Программа завершена.")
-#         break
-    
-#     # Обработка числа
-#     print(f"Вы ввели: {number}")
+# --------перевіряє обмеження та надає:
+#  список випадкових чисел або порпожній список--------------    
+def get_numbers_ticket(min, max, quantity) ->[]:
+    if min>=1 and min<max<1000 and min<=quantity<=max:
+        digit_random_list=random.sample(range(min,max),quantity)
+    else:
+        digit_random_list=[]
+    return digit_random_list
 
 
- 
+# ------------ Виклик Функції---------------
+print(f"Набір унікальних випадкових чисел {get_numbers_ticket(min_digit,max_digit,qtt_digits)}")
