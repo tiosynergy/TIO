@@ -44,4 +44,4 @@ while True:
 inputed_date=datetime(input_year,input_month,input_day)
 current_date=datetime.today().date()
 
-print(f"кількість днів між\n заданою датою: {inputed_date.date()}\n і поточною датою: {current_date} \n становить {get_days_from_today(inputed_date)}")
+print(f" кількість днів між\n заданою датою: {inputed_date.date()}\n і поточною датою: {current_date} \n становить {get_days_from_today(inputed_date)}")
