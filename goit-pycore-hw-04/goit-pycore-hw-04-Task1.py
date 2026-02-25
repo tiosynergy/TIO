@@ -2,12 +2,12 @@
 def total_salary(path:str)->tuple:
     try:
         with open(path, 'r+', encoding="utf-8") as file:
-            workers_list=[]
+            workers_list:list=[]
 
         #---------построчно читается содеримое файла----------
             lines=file.readlines()
-            total_amount=0
-            everage_amount=0
+            total_amount:float=0
+            everage_amount:float=0
 
         #------для каждой строчки убираются, переносы, пробелы
         # ------- и через "," формируются списки---------
@@ -31,7 +31,8 @@ def total_salary(path:str)->tuple:
         print(f"файл {path} не знайдено")
         return (None, None)
 
-
-#-------Вызов функции-------------
-total,average=total_salary("./goit-pycore-hw-04/salary.txt")
-print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {average}")
+# конструкция прямого вызова--------
+if __name__ == "__main__":
+    #-------Вызов функции-------------
+    total,average=total_salary("salary.txt")
+    print(f"Загальна сума заробітної плати: {total}, Середня заробітна плата: {average}")

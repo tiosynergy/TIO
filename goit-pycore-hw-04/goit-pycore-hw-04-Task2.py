@@ -1,5 +1,5 @@
-def get_cats_info(path):
-    cats=[]
+def get_cats_info(path:str)->list:
+    cats:list=[]
 #----------обработка ошибок с файлом----------
     try:
 #----------открывается файл для чтения--------
@@ -7,7 +7,7 @@ def get_cats_info(path):
             for lines in file:
 #-----очищаются данные для добавления в словарь-------
                 cleaned_content=lines.strip().split(",")
-                cats_dict={
+                cats_dict:dict={
                     "id":cleaned_content[0],
                     "name":cleaned_content[1],
                     "age":int(cleaned_content[2])}
@@ -18,6 +18,9 @@ def get_cats_info(path):
     except FileNotFoundError:
         print(f"файл {path} не знайдено")
 
+
+# конструкция прямого вызова--------
+if __name__ == "__main__":
 #------вызов функции------------
-cats_info = get_cats_info("./goit-pycore-hw-04/cats.txt")
-print(cats_info)
+    cats_info:list = get_cats_info("cats.txt")
+    print(cats_info)

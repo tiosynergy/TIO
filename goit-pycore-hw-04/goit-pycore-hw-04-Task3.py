@@ -6,21 +6,22 @@ from colorama import Fore, Style, init
 
 init(autoreset=True)
 
-# функция сортировки файл- True или папка - False + имя
-def sort_key(x):
+
+''' функция сортировки
+файл = True или папка = False + имя'''
+def sort_key(x) -> Tuple[bool, Path]:
     return (x.is_file(), x)
 
-# фуункция вывода структуры директории
+# функция вывода структуры директории
 def tree(path: Path, space: str = '', level: int = 0):
 
 # Проверка на существование дирректории
     try:
 # составляем и сортирууем список папок и файлов
         items = sorted(path.iterdir(), key=sort_key)
-    except FileNotFoundError:
+    except FileNotFoundError: 
         print('Директория не найдена')
         return
-    
     for i, item in enumerate(items):
         is_last = i == len(items) - 1
         if item.is_dir():
@@ -30,10 +31,12 @@ def tree(path: Path, space: str = '', level: int = 0):
         else:
             print(space + Fore.GREEN + item.name + Style.RESET_ALL)
 
+
+# конструкция прямого вызова--------
 if __name__ == '__main__':
 
-    dir_path = sys.argv[1]
-    p = Path(dir_path)
+    dir_path:str = sys.argv[1]
+    p:Path = Path(dir_path)
     
     print(f"Структура директории: {p.absolute()}")
     # ------- вызов функции------
@@ -41,5 +44,4 @@ if __name__ == '__main__':
     
 
 
-# python D:\OneDrive\Desktop\Python\Neoversity\TEST\TIO\goit-pycore-hw-04-Task3\goit-pycore-hw-04-Task3.py D:\OneDrive\Desktop\Python\Neoversity\Practice
-
+# python goit-pycore-hw-04-Task3.py D:\OneDrive\Desktop\Python\Neoversity\Practice

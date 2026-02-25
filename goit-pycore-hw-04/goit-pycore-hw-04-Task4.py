@@ -3,10 +3,12 @@ def parse_input(user_input):
     cmd = cmd.strip().lower()
     return cmd, *args
 
+
 def add_contact(args, contacts):
     name, phone = args
     contacts[name] = phone
     return "Контакт добавлен"
+
 
 def change_contact(args, contacts):
     name, phone = args
@@ -16,16 +18,19 @@ def change_contact(args, contacts):
     else:
         return "Контакт не найден"
 
+
 def phone_username(args, contacts):
     name = args[0]
     if name in contacts:
         return f"Номер телефона {name}: {contacts[name]}"
     else:
         return "Контакт не найден"
-    
+
+
 def show_all(contacts):
     result = "\n".join(f"{name}: {phone}" for name, phone in contacts.items())
     return result
+
 
 def main():
     contacts = {
@@ -42,7 +47,7 @@ def main():
     }
     print("Welcome to the assistant bot!")
     while True:
-        user_input = input("Enter a command: ")
+        user_input:str = input("Enter a command: ")
         command, *args = parse_input(user_input)
         if command in ["close", "exit"]:
             print("Good bye!")
@@ -62,5 +67,7 @@ def main():
         else:
             print("Invalid command.")
 
+# конструкция прямого вызова--------
 if __name__ == "__main__":
+#  вызов фунуции-----------
     main()
