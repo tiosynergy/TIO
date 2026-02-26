@@ -1,13 +1,13 @@
-def get_cats_info(path:str)->list:
-    cats:list=[]
+def get_cats_info(path:str) -> list:
+    cats:list = []
 #----------обработка ошибок с файлом----------
     try:
 #----------открывается файл для чтения--------
         with open(path, 'r', encoding="utf-8") as file:
             for lines in file:
 #-----очищаются данные для добавления в словарь-------
-                cleaned_content=lines.strip().split(",")
-                cats_dict:dict={
+                cleaned_content = lines.strip().split(",")
+                cats_dict:dict = {
                     "id":cleaned_content[0],
                     "name":cleaned_content[1],
                     "age":int(cleaned_content[2])}

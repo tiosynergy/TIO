@@ -18,7 +18,7 @@ def tree(path: Path, space: str = '', level: int = 0):
 # Проверка на существование дирректории
     try:
 # составляем и сортирууем список папок и файлов
-        items = sorted(path.iterdir(), key=sort_key)
+        items = sorted(path.iterdir(), key = sort_key)
     except FileNotFoundError: 
         print('Директория не найдена')
         return
@@ -36,11 +36,13 @@ def tree(path: Path, space: str = '', level: int = 0):
 if __name__ == '__main__':
 
     dir_path:str = sys.argv[1]
+    print(sys.modules["colorama"])
     p:Path = Path(dir_path)
     
     print(f"Структура директории: {p.absolute()}")
     # ------- вызов функции------
     tree(p)
+
     
 
 
