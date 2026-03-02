@@ -14,11 +14,11 @@ def caching_fibonacci():
 
     return fibonacci
 # КІНЕЦЬ ФУНКЦІЇ caching_fibonacci
-
+if __name__ == "__main__":
 # Отримуємо функцію fibonacci
-fib = caching_fibonacci()
+    fib = caching_fibonacci()
 
 # Використовуємо функцію fibonacci для обчислення чисел Фібоначчі
-print(fib(10))  # Виведе 55
-print(fib(15))  # Виведе 610
+    print(fib(10))  # Виведе 55
+    print(fib(15))  # Виведе 610
 
