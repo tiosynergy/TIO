@@ -14,8 +14,8 @@ def get_upcoming_birthdays(user):  # / user - словник
     try:
         this_year_bday = datetime(now.year, birthday.month, birthday.day)
     except ValueError:
-        #--- 29 лютого в невисокосному році → беремо 28 лютого
-        this_year_bday = datetime(now.year, 2, 28)
+        # 29 Лютого в невисокосному році переносима на 28 Лютого
+        this_year_bday = datetime(now.year, birthday.month, birthday.day - 1)
 
     user_birthday_this_year = {
         "name": user["name"],
