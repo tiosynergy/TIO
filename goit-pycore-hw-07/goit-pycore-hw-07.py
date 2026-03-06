@@ -86,7 +86,7 @@ class AddressBook(UserDict):
     def delete(self, name: str) -> None:
         self.data.pop(name, None)
 
-# -------- Адаптована функція get_upcoming_birthdays з 4-го ДЗ
+# -------- Адаптована функція get_upcoming_birthdays з 3-го ДЗ
 #  Початок функції кого з колег потрібно привітати ----
     def get_upcoming_birthdays(self):
         """Повертає список словників з контактами, яких потрібно привітати протягом наступних 7 днів"""
@@ -102,9 +102,15 @@ class AddressBook(UserDict):
             birthday = record.birthday.value   # вже date з класу Birthday
 
             # визначення дня народження в поточному році
+            try:
+                birthday_this_year = datetime(now.year, birthday.month, birthday.day).date()
+            except ValueError:
+            # 29 Лютого в невисокосному році переносима на 28 Лютого
+                birthday_this_year = datetime(now.year, birthday.month, birthday.day - 1).date()
+
             user_birthday_this_year = {
-                "name": record.name.value,
-                "birthday": datetime(now.year, birthday.month, birthday.day).date()
+            "name": record.name.value,
+            "birthday": birthday_this_year
             }
 
             # перевірка чи ДР вже минув у цьому році

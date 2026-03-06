@@ -10,12 +10,18 @@ def get_upcoming_birthdays(user):  # / user - словник
     # ---------приведення user до типу Datetime--------------------
     birthday = datetime.strptime(user["birthday"], "%Y.%m.%d").date()
 
-    # --------визначення дня народження колеги в поточномуу році----
+# --------визначення дня народження колеги в поточному році----
+    try:
+        this_year_bday = datetime(now.year, birthday.month, birthday.day)
+    except ValueError:
+        #--- 29 лютого в невисокосному році → беремо 28 лютого
+        this_year_bday = datetime(now.year, 2, 28)
+
     user_birthday_this_year = {
         "name": user["name"],
-        "birthday": datetime(now.year, birthday.month, birthday.day)
+        "birthday": this_year_bday
     }
-
+ 
     # -------перевірка чи ДР ве минув---------------------------
     if user_birthday_this_year["birthday"].date() < now:
         print(f"\nДень народження {user_birthday_this_year['name']} в цьому році минув")
