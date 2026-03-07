@@ -1,7 +1,7 @@
 import random
 
 
-def get_numbers_ticket(min, max, quantity) ->list:
+def get_numbers_ticket(min, max, quantity) -> list:
     """перевіряє обмеження та надає:
        список випадкових чисел або порпожній список"""
     if (
@@ -17,7 +17,7 @@ def get_numbers_ticket(min, max, quantity) ->list:
 if __name__ == "__main__":
     while True:
         try:
-            min_digit = int(input("Введи мінімальне число >=1:"))
+            min_digit = int(input("Введи мінімальне число >= 1:"))
             if type(min_digit) == False:
                 continue
             else:
@@ -36,7 +36,8 @@ if __name__ == "__main__":
             print("Помилка: Потрібно вводити тільки цифри!")
     while True:
         try:
-            qtt_digits = int(input(f"Введи необхідну кількість випадкових чисел в діапазоні до:{max_digit-min_digit}: "))
+            request_text = f"Введіть кількість чисел (до {max_digit - min_digit}): "
+            qtt_digits = int(input(request_text).strip())
             if type(qtt_digits) == False:
                 continue
             else:
